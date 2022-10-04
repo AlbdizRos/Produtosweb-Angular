@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-body">
+            <h5 class="card-title">Cadastro de Produtos</h5>
+            <p class="card-text">Preencha os campos para incluir um produto.</p>
+            <hr />
+ 
+            <form [formGroup]="formCadastro" (ngSubmit)="onSubmit()">
+ 
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label>Nome do produto:</label>
+                        <input type="text" class="form-control" formControlName="nome" />
+                        <div class="text-danger" *ngIf="form.nome.touched && form.nome.invalid">
+                            <span *ngIf="form.nome.errors.required">
+                                Por favor, informe o nome do produto.
+                            </span>
+                            <span *ngIf="form.nome.errors.minlength">
+                                Por favor, informe no mínimo 6 caracteres.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Preço do produto:</label>
+                        <input type="text" class="form-control" formControlName="preco" />
+                        <div class="text-danger" *ngIf="form.preco.touched && form.preco.invalid">
+                            <span *ngIf="form.preco.errors.required">
+                                Por favor, informe o preço do produto.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Quantidade do produto:</label>
+                        <input type="number" class="form-control" formControlName="quantidade" />
+                        <div class="text-danger" *ngIf="form.quantidade.touched && form.quantidade.invalid">
+                            <span *ngIf="form.quantidade.errors.required">
+                                Por favor, informe a quantidade do produto.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+ 
+                <div class="row mb-3">
+                    <div class="col-md-9">
+                        <label>Descrição:</label>
+                        <textarea class="form-control" formControlName="descricao"></textarea>
+                        <div class="text-danger" *ngIf="form.descricao.touched && form.descricao.invalid">
+                            <span *ngIf="form.descricao.errors.required">
+                                Por favor, informe a descrição do produto.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Selecione o Fornecedor:</label>
+                        <select class="form-select" formControlName="idFornecedor">
+                            <option value="">Escolha uma opção</option>
+                            <option *ngFor="let f of fornecedores" value="{{f.idFornecedor}}">
+                                {{f.nome}}
+                            </option>
+                        </select>
+                        <div class="text-danger" *ngIf="form.idFornecedor.touched && form.idFornecedor.invalid">
+                            <span *ngIf="form.idFornecedor.errors.required">
+                                Por favor, selecione o fornecedor.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+ 
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <input type="submit" value="Realizar Cadastro" class="btn btn-success"
+                            [disabled]="!formCadastro.valid" />
+                    </div>
+                </div>
+ 
+            </form>
+ 
+            <div class="mt-3">
+                <strong>{{mensagem}}</strong>
+            </div>
+ 
+        </div>
+    </div>
+</div>
+
+

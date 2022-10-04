@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-body">
+            <h5 class="card-title">Edição de Fornecedores</h5>
+            <p class="card-text">Utilize os campos para atualizar um fornecedor.</p>
+            <hr />
+ 
+            <form [formGroup]="formEdicao" (ngSubmit)="onSubmit()">
+ 
+                <!-- campo oculto -->
+                <input type="hidden" formControlName="idFornecedor"/>
+ 
+                <div class="row mb-3">
+                    <div class="col-md-9">
+                        <label>Nome do fornecedor:</label>
+                        <input type="text" class="form-control" formControlName="nome" />
+                        <div class="text-danger" *ngIf="form.nome.touched && form.nome.invalid">
+                            <span *ngIf="form.nome.errors.required">
+                                Por favor, informe o nome do fornecedor.
+                            </span>
+                            <span *ngIf="form.nome.errors.minlength">
+                                Por favor, informe no mínimo 6 caracteres.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label>CNPJ do fornecedor:</label>
+                        <input type="text" class="form-control" formControlName="cnpj" />
+                        <div class="text-danger" *ngIf="form.cnpj.touched && form.cnpj.invalid">
+                            <span *ngIf="form.cnpj.errors.required">
+                                Por favor, informe o cnpj do fornecedor.
+                            </span>
+                            <span *ngIf="form.cnpj.errors.minlength">
+                                Por favor, informe no mínimo 14 caracteres.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+ 
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <input type="submit" value="Salvar Alterações" class="btn btn-primary"
+                            [disabled]="!formEdicao.valid" />
+                    </div>
+                </div>
+ 
+            </form>
+ 
+            <div class="mt-3">
+                <strong>{{mensagem}}</strong>
+            </div>
+ 
+        </div>
+    </div>
+</div>
+
+

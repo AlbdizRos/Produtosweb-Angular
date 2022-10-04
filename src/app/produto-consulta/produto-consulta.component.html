@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="card mt-5">
+      <div class="card-body">
+        <h5 class="card-title">Consulta de Produtos</h5>
+        <p class="card-text">Listagem de produtos cadastrados.</p>
+        <hr />
+ 
+        <div class="mb-3">
+            <strong>{{mensagem}}</strong>
+        </div>
+       
+        <table class="table table-sm table-hover">
+            <thead>
+                <tr>
+                    <th>Nome do produto</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Total</th>
+                    <th>Descrição</th>
+                    <th>Fornecedor</th>
+                    <th>Operações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of produtos">
+                    <td>{{p.nome}}</td>
+                    <td>{{p.preco | currency : 'R$ '}}</td>
+                    <td>{{p.quantidade}}</td>
+                    <td>{{p.total | currency : 'R$ '}}</td>
+                    <td>{{p.descricao}}</td>
+                    <td>
+                        {{p.nomeFornecedor}} <br/>
+                        <small>CNPJ: {{p.cnpjFornecedor}}</small>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">
+                            Editar
+                        </button>
+                        &nbsp;
+                        <button class="btn btn-danger btn-sm"
+                            (click)="onDelete(p.idProduto)">
+                            Excluir
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        Quantidade de produtos: {{produtos.length}}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+         
+      </div>
+    </div>
+  </div>
+
+
+

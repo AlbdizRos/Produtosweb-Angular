@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="card mt-5">
+      <div class="card-body">
+        <h5 class="card-title">Consulta de Fornecedores</h5>
+        <p class="card-text">Listagem de fornecedores cadastrados.</p>
+        <hr />
+ 
+        <div class="mb-3">
+            <strong>{{mensagem}}</strong>
+        </div>
+       
+        <table class="table table-sm table-hover">
+            <thead>
+                <tr>
+                    <th>Nome do fornecedor</th>
+                    <th>CNPJ</th>
+                    <th>Operações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let f of fornecedores">
+                    <td>{{f.nome}}</td>
+                    <td>{{f.cnpj}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm"
+                            [routerLink]="['/fornecedor-edicao', f.idFornecedor]">
+                            Editar
+                        </button>
+                        &nbsp;
+                        <button class="btn btn-danger btn-sm"
+                            (click)="onDelete(f.idFornecedor)">
+                            Excluir
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">
+                        Quantidade de fornecedores: {{fornecedores.length}}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+         
+      </div>
+    </div>
+  </div>
+
+

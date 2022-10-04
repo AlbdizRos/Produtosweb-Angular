@@ -1,0 +1,77 @@
+<div class="row mt-5">
+    <div class="col-md-4 offset-md-4">
+ 
+        <div class="card">
+            <div class="card-body">
+ 
+                <div class="text-center">
+                    <img src="https://www.cotiinformatica.com.br/imagens/logo-coti-informatica.png" class="img-fluid" />
+                    <h3>Acessar Sistema</h3>
+                    <p>Informe suas credenciais de acesso.</p>
+                </div>
+ 
+                <hr />
+ 
+                <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+ 
+                    <div class="mb-3">
+                        <label>Email de acesso:</label>
+                        <input type="text" class="form-control" formControlName="email"
+                            placeholder="Digite seu email aqui" />
+ 
+                        <div class="text-danger" *ngIf="form.email.touched && form.email.invalid">
+                            <div *ngIf="form.email.errors.required">
+                                Por favor, informe seu email.
+                            </div>
+                            <div *ngIf="form.email.errors.email">
+                                Por favor, informe um endereço de email válido.
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="mb-3">
+                        <label>Senha de acesso:</label>
+                        <input type="password" class="form-control" formControlName="senha"
+                            placeholder="Digite sua senha aqui" />
+                        <div class="text-danger" *ngIf="form.senha.touched && form.senha.invalid">
+                            <div *ngIf="form.senha.errors.required">
+                                Por favor, informe sua senha.
+                            </div>
+                            <div *ngIf="form.senha.errors.minlength">
+                                Por favor, informe no mínimo 6 caracteres.
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <a [routerLink]="['/recuperar-senha']">
+                                Esqueci minha senha
+                            </a>
+                        </div>
+                    </div>
+ 
+                    <div class="mb-3">
+                        <div class="d-grid">
+                            <input type="submit" value="Acessar Sistema" [disabled]="!formLogin.valid"
+                                class="btn btn-primary" />
+                        </div>
+                    </div>
+ 
+                    <div class="mb-3">
+                        <div class="d-grid">
+                            <a [routerLink]="['/criar-conta']" class="btn btn-light">
+                                Não possui conta? <strong>Cadastre-se aqui!</strong>
+                            </a>
+                        </div>
+                    </div>
+ 
+                </form>
+ 
+                <div class="text-center text-danger mt-3">
+                    <strong>{{mensagem}}</strong>
+                </div>
+ 
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,61 @@
+<div class="row mt-5">
+    <div class="col-md-4 offset-md-4">
+ 
+        <div class="card">
+            <div class="card-body">
+ 
+                <div class="text-center">
+                    <h3>Recuperar Senha de Acesso</h3>
+                    <p>Informe seus email para recuperar senha.</p>
+                </div>
+ 
+                <hr />
+ 
+                <form [formGroup]="formRecuperarSenha" (ngSubmit)="onSubmit()">
+ 
+                    <div class="mb-3">
+                        <label>Email de acesso:</label>
+                        <input type="text" class="form-control"
+                            formControlName="email"
+                            placeholder="Digite seu email aqui" />
+ 
+                        <div class="text-danger" *ngIf="form.email.touched && form.email.invalid">
+                            <div *ngIf="form.email.errors.required">
+                                Por favor, informe seu email.
+                            </div>
+                            <div *ngIf="form.email.errors.email">
+                                Por favor, informe um endereço de email válido.
+                            </div>
+                        </div>
+ 
+                    </div>
+ 
+                    <div class="mb-3">
+                        <div class="d-grid">
+                            <input type="submit" value="Recuperar Senha"
+                                [disabled]="!formRecuperarSenha.valid"
+                                class="btn btn-primary" />
+                        </div>
+                    </div>
+ 
+                    <div class="mb-3">
+                        <div class="d-grid">
+                            <a [routerLink]="['/login']" class="btn btn-light">
+                                <strong>Voltar</strong>
+                            </a>
+                        </div>
+                    </div>
+ 
+                </form>
+ 
+                <div class="text-center mt-3">
+                    <strong>{{mensagem}}</strong>
+                </div>
+ 
+            </div>
+        </div>
+ 
+    </div>
+</div>
+
+
